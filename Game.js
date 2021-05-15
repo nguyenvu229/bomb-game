@@ -56,16 +56,6 @@ function Game() {
       player2.setBomb()
     }
   })
-
-  // function isBarrierPosition(xPos, yPos) {
-  //   let x = xPos / 50
-  //   let y = yPos / 50
-  
-  //   if (map.getPositionValue(x, y) != 0 && map.getPositionValue(x, y) != 4) {
-  //     return true
-  //   }
-  //   return false
-  // }
 }
 
 
