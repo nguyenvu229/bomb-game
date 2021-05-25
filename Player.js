@@ -10,11 +10,16 @@ function Player(x, y, map) {
     return yPos
   }
 
+  this.resetPlayer = function(x, y) {
+    xPos = x
+    yPos = y
+  }
+
   this.moveLeft = function () {
     let isOnBorder = (xPos == 0)
     let newXPos = xPos - 50
 
-    if (!isOnBorder && !isBarrierPosition(newXPos, yPos)) {
+    if (!isOnBorder && isBarrierPosition(newXPos, yPos) == false) {
       xPos -= 50
     }
   }
@@ -23,7 +28,7 @@ function Player(x, y, map) {
     let isOnBorder = (xPos == 500 - 50)
     let newXPos = xPos + 50
 
-    if (!isOnBorder && !isBarrierPosition(newXPos, yPos)) {
+    if (!isOnBorder && isBarrierPosition(newXPos, yPos) == false) {
       xPos += 50
     }
   }
@@ -32,7 +37,7 @@ function Player(x, y, map) {
     let isOnBorder = (yPos == 0)
     let newYPos = yPos - 50
 
-    if (!isOnBorder && !isBarrierPosition(xPos, newYPos)) {
+    if (!isOnBorder && isBarrierPosition(xPos, newYPos) == false) {
       yPos -= 50
     }
   }
@@ -41,27 +46,25 @@ function Player(x, y, map) {
     let isOnBorder = (yPos == 500 - 50)
     let newYPos = yPos + 50
 
-    if (!isOnBorder && !isBarrierPosition(xPos, newYPos)) {
+    if (!isOnBorder && isBarrierPosition(xPos, newYPos) == false) {
       yPos += 50
     }
   }
 
   this.setBomb = function () {
-    let xBomb = xPos / 50
-    let yBomb = yPos / 50
+    let xBomb = xPos / GRID_SIZE
+    let yBomb = yPos / GRID_SIZE
 
     map.setPositionValue(xBomb, yBomb, 3)
   }
 
-  this.die = function () {
-
-  }
-
   function isBarrierPosition(xPos, yPos) {
-    let x = xPos / 50
-    let y = yPos / 50
-  
-    if (map.getPositionValue(x, y) != 0 && map.getPositionValue(x, y) != 4) {
+    let x = xPos / GRID_SIZE
+    let y = yPos / GRID_SIZE
+
+    if (map.getPositionValue(x, y) == 1 || 
+        map.getPositionValue(x, y) == 2 || 
+        map.getPositionValue(x, y) == 3){
       return true
     }
     return false

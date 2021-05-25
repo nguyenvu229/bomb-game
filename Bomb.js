@@ -21,24 +21,18 @@ function Bomb(x, y, map) {
     }, 3000)
   }
 
-  this.clear = function () {
-    setTimeout(function () {
-      clearFlame(xPos, yPos, map)
-    }, 3500)
-  }
-
-  function clearFlame(xPos, yPos, map) {
-    xPos = xPos - 25
-    yPos = yPos - 25
-    let upFlame = yPos / GRID_SIZE - 1
-    let downFlame = yPos / GRID_SIZE + 1
-    let leftFlame = xPos / GRID_SIZE - 1
-    let rightFlame = xPos / GRID_SIZE + 1
+  function Explosion(xPos, yPos, map) {
+    let x = xPos / 50
+    let y = yPos / 50
+    let upFlame = y - 1
+    let downFlame = y + 1
+    let leftFlame = x - 1
+    let rightFlame = x + 1
   
-    map.setPositionValue(xPos / GRID_SIZE, yPos / GRID_SIZE, 0)
-    map.setPositionValue(xPos / GRID_SIZE, upFlame, 0)
-    map.setPositionValue(xPos / GRID_SIZE, downFlame, 0)
-    map.setPositionValue(leftFlame, yPos / GRID_SIZE, 0)
-    map.setPositionValue(rightFlame, yPos / GRID_SIZE, 0)
+    map.setPositionValue(x , y , FLAME)
+    map.setPositionValue(x , upFlame, FLAME)
+    map.setPositionValue(x , downFlame, FLAME)
+    map.setPositionValue(leftFlame, y , FLAME)
+    map.setPositionValue(rightFlame, y , FLAME)
   }
 }
