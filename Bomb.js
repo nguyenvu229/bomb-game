@@ -30,15 +30,15 @@ function Bomb(x, y, map) {
   function clearFlame(xPos, yPos, map) {
     xPos = xPos - 25
     yPos = yPos - 25
-    let upFlame = yPos / 50 - 1
-    let downFlame = yPos / 50 + 1
-    let leftFlame = xPos / 50 - 1
-    let rightFlame = xPos / 50 + 1
+    let upFlame = yPos / GRID_SIZE - 1
+    let downFlame = yPos / GRID_SIZE + 1
+    let leftFlame = xPos / GRID_SIZE - 1
+    let rightFlame = xPos / GRID_SIZE + 1
   
-    map.setPositionValue(xPos / 50, yPos / 50, 0)
-    map.setPositionValue(xPos / 50, upFlame, 0)
-    map.setPositionValue(xPos / 50, downFlame, 0)
-    map.setPositionValue(leftFlame, yPos / 50, 0)
-    map.setPositionValue(rightFlame, yPos / 50, 0)
+    map.setPositionValue(xPos / GRID_SIZE, yPos / GRID_SIZE, 0)
+    map.setPositionValue(xPos / GRID_SIZE, upFlame, 0)
+    map.setPositionValue(xPos / GRID_SIZE, downFlame, 0)
+    map.setPositionValue(leftFlame, yPos / GRID_SIZE, 0)
+    map.setPositionValue(rightFlame, yPos / GRID_SIZE, 0)
   }
 }
